@@ -61,6 +61,19 @@ const mercuryObject=new THREE.Object3D()
 mercuryObject.add(mercury)
 scene.add(mercuryObject);
 
+// 
+
+const saturnGeo = new THREE.SphereGeometry(3.2, 30, 30);
+const saturnMat = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load(saturnTexture)
+});
+const saturn = new THREE.Mesh(saturnGeo, saturnMat);
+saturn.position.x = 50;
+const saturnObject=new THREE.Object3D()
+saturnObject.add(saturn)
+scene.add(saturnObject);
+
+
 function animate() {
     sun.rotateY(0.00004);
     requestAnimationFrame(animate);
