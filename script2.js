@@ -60,7 +60,7 @@ mercury.position.x = 28;
 sun.add(mercury);
 
 function animate() {
-    sun.rotateY(0.0004);
+    sun.rotateY(0.00004);
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
