@@ -14,6 +14,7 @@ import uranusRingTexture from './img/uranus ring.png';
 import neptuneTexture from './img/neptune.jpg';
 import plutoTexture from './img/pluto.jpg';
 
+// Créer la scène
 const scene = new THREE.Scene();
 
 // Créer la caméra
@@ -49,29 +50,29 @@ const sunMat = new THREE.MeshBasicMaterial({
 const sun = new THREE.Mesh(sunGeo, sunMat);
 scene.add(sun);
 
-// Créer Vénus
-const venusGeo = new THREE.SphereGeometry(3.2, 30, 30);
-const venusMat = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load(venusTexture)
+// Créer Mercure
+const mercuryGeo = new THREE.SphereGeometry(3.2, 30, 30);
+const mercuryMat = new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load(mercuryTexture)
 });
-const venus = new THREE.Mesh(venusGeo, venusMat); // Correction du nom de la planète
-venus.position.x = 28;
-sun.add(venus); // Correction du nom de la planète
+const mercury = new THREE.Mesh(mercuryGeo, mercuryMat);
+mercury.position.x = 28;
+const mercuryObject=new THREE.Object3D()
+mercuryObject.add(mercury)
+scene.add(mercuryObject);
 
 function animate() {
     sun.rotateY(0.00004);
     requestAnimationFrame(animate);
+    mercuryObject.rotateY(0.0004)
     renderer.render(scene, camera);
 }
 
 renderer.setAnimationLoop(animate);
 
-const pointLight = new THREE.PointLight(0xFFFFFF, 2, 300);
-scene.add(pointLight);
-
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    camera.updateProjectionMatrix(); // Mettre à jour la matrice de projection de la caméra
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
