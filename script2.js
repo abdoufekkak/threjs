@@ -63,7 +63,7 @@ scene.add(mercuryObject);
 
 // 
 
-const saturnGeo = new THREE.SphereGeometry(3.2, 30, 30);
+const saturnGeo = new THREE.SphereGeometry(10, 30, 30);
 const saturnMat = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load(saturnTexture)
 });
@@ -80,7 +80,19 @@ function animate() {
     mercuryObject.rotateY(0.0004)
     renderer.render(scene, camera);
 }
-
+// function  createPlanet(size,texture,position){
+//     const geo = new THREE.SphereGeometry(size, 30, 30);
+//     const mat = new THREE.MeshBasicMaterial({
+//         map: new THREE.TextureLoader().load(texture),
+//         side:THREE.DoubleSide
+//     });
+//     const mesh = new THREE.Mesh(geo, mat);
+//     mesh.position.x = position;
+//     const obj=new THREE.Object3D()
+//     obj.add(mesh)
+//     scene.add(obj);
+//     return {mesh:mesh,obj:obj}
+// }
 renderer.setAnimationLoop(animate);
 
 window.addEventListener('resize', function() {
